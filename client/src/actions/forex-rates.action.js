@@ -19,7 +19,7 @@ export const startAddForexRate = (base) => {
             const forexRate = response.data;
             dispatch(addForexRate({ base, forexRate }));
         }).catch((error) => {
-            toastr.error(error)
+            dispatch(addForexRate({ base, forexRate: { error: true }}));
         })
     }
 }

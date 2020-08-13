@@ -47,7 +47,9 @@ const UserForm = ({ title, subtitle, subtext, action, hasGoogleLogin, submitDisp
                         <h1 className="box-layout__title">{title}</h1>
                     }
 
-                    <h2 className="box-layout__subtitle">{subtitle}</h2>
+                    <h2 className="box-layout__subtitle">
+                        {action === 'login' ? <i className="fas fa-lock"></i> : subtitle}
+                    </h2>
                     <span className="box-layout__subtext">{subtext}</span>
                     <form onSubmit={handleOnSubmit}>
                         <FormInput type="email"

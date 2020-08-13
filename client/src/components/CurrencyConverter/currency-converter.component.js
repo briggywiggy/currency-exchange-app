@@ -30,7 +30,7 @@ const CurrencyConverter = () => {
     }
 
     const convertAmount = () => {
-        if(Object.keys(conversionRate).length > 0) {
+        if(Object.keys(conversionRate).length > 0 && !conversionRate.hasOwnProperty('error')) {
             const amount = numeral(firstAmount).value() * conversionRate.rate;
             validateAndFormatCurrencyInput(amount, setSecondAmount);
         }
@@ -41,10 +41,6 @@ const CurrencyConverter = () => {
         setFirstCurrency(secondCurrency);
         setSecondCurrency(retainFirstCurrency);
     }
-
-    // useEffect(() => {
-    //     dispatchStartSetConversionRate();
-    // }, []);
 
     useEffect(() => {
         convertAmount();
@@ -88,8 +84,14 @@ const CurrencyConverter = () => {
                 {
                     Object.keys(conversionRate).length > 0 &&
                     <div className="currency-converter__display">
-                        <h4>{`1 ${currencies[firstCurrency]}`} equals <br className="show-for-mobile"/><strong><span className="success">{validateAndFormatCurrencyInput(conversionRate.rate)}</span> {`${currencies[secondCurrency]}`}</strong></h4>
-                        <small>Exchange rate on <br className="show-for-mobile"/><strong>{formatTimeStampToUTC(conversionRate.timestamp)}</strong></small>
+                        { 
+                            conversionRate.hasOwnProperty('error') ?
+                            <h4>A problem was encountered. Please try again.</h4> :
+                            <>
+                                <h4>{`1 ${currencies[firstCurrency]}`} equals <br className="show-for-mobile"/><strong><span className="success">{validateAndFormatCurrencyInput(conversionRate.rate)}</span> {`${currencies[secondCurrency]}`}</strong></h4>
+                                <small>Exchange rate on <br className="show-for-mobile"/><strong>{formatTimeStampToUTC(conversionRate.timestamp)}</strong></small>
+                            </>
+                        }
                     </div>
                 }
             </div>

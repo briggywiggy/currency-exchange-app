@@ -66,6 +66,9 @@ input[type="button"]::-moz-focus-inner {
 .success {
   color: $success;
 }
+.error {
+  color: $error;
+}
 
 .page {
   height: 100vh;

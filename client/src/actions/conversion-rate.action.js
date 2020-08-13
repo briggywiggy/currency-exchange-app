@@ -27,7 +27,8 @@ export const startSetConversionRate = ({base, symbols}) => {
             };
             dispatch(setConversionRate(conversionRate));
         }).catch((error) => {
-            toastr.error(error)
+            toastr.error(error);
+            dispatch(setConversionRate({ error: true }));
         })
     }
 }

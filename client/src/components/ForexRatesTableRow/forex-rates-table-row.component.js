@@ -19,19 +19,37 @@ const ForexRatesTableRow = ({ index, currencyCode }) => {
                 {currencyCode}
             </div>
             {
-                !!forexRates[currencyCode] ?
-                Object.keys(forexRates[currencyCode].rates)
-                .sort()
-                .map((ratescurrencyCode, ratesIndex) => (
-                    <div key={ratesIndex} className="td">
-                    {forexRates[currencyCode].rates[ratescurrencyCode]}
-                    </div>
-                )) :
-                Object.keys(currencies).map((keyName, currenciesIndex) => (
-                    <div key={currenciesIndex} className="td">
-                        <Loader />
-                    </div>
-                ))
+                (() => {
+                    if(forexRates[currencyCode]) {
+                        if(forexRates[currencyCode].hasOwnProperty('error')) {
+                            return (
+                                Object.keys(currencies).map((keyName, currenciesIndex) => (
+                                    <div key={currenciesIndex} className="td">
+                                        <span className="error"><i className="fas fa-times"></i></span>
+                                    </div>
+                                ))
+                            )
+                        } else {
+                            return (
+                                Object.keys(forexRates[currencyCode].rates)
+                                .sort()
+                                .map((ratescurrencyCode, ratesIndex) => (
+                                    <div key={ratesIndex} className="td">
+                                    {forexRates[currencyCode].rates[ratescurrencyCode]}
+                                    </div>
+                                ))
+                            )
+                        }
+                    } else {
+                        return (
+                            Object.keys(currencies).map((keyName, currenciesIndex) => (
+                                <div key={currenciesIndex} className="td">
+                                    <Loader />
+                                </div>
+                            ))
+                        )
+                    }
+                })()
             }
         </div>
     )
