@@ -9,10 +9,9 @@ import { startPopulateCurrencies } from '../../actions/currencies.action';
 const DashboardPage = () => {
     const currencies = useSelector(state => state.currencies);
     const dispatch = useDispatch();
-    const dispatchStartPopulateCurrencies = () => dispatch(startPopulateCurrencies())
 
     useEffect(() => {
-        if(Object.keys(currencies).length === 0) dispatchStartPopulateCurrencies ;
+        if(Object.keys(currencies).length === 0) dispatch(startPopulateCurrencies());
     }, []);
 
     return (
