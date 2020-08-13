@@ -15,7 +15,7 @@ const forexRouter = require('./routers/forex.router');
 const app = express();
 
 // Define paths for Express config
-const publicPath = path.join(__dirname, '..', 'public');
+const publicPath = path.join(__dirname, '..', '..', 'public');
 
 // Setup static directory to serve
 app.use(express.static(publicPath));
