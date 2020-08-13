@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render DashboardPage correctly 1`] = `undefined`;
+
+exports[`should render LoadingPage correctly 1`] = `
+<div
+  className="loading-page page"
+>
+  <img
+    className="loading-page__image"
+    src="/images/loader_alt.gif"
+  />
+</div>
+`;

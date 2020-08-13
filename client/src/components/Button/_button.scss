@@ -1,0 +1,47 @@
+.button {
+    background: $blue;
+    border: 2px solid transparent;
+    box-shadow: 0px 5px 0px darken($color: $blue, $amount: 20%);
+    border-radius: 5pt;
+    color: $white;
+    display: inline-block;
+    font-size: $font-size-large;
+    font-weight: 300;
+    line-height: 1;
+    padding: $s-size;
+    position: relative;
+    text-decoration: none;
+    text-transform: capitalize;
+    top: 0px;
+    transition: all ease 0.3s;
+
+    &:hover {
+        border: 2px solid darken($color: $blue, $amount: 10%);
+        color: $off-white;
+    }
+
+    &:active {
+        box-shadow: 0px 3px 0px darken($color: $blue, $amount: 20%);
+        color: $off-grey;
+        top: 3px;
+    }
+}
+
+.button--full-width {
+    width: 100%;
+}
+
+.button--link {
+    background: none;
+    border: none;
+    box-shadow: none;
+    
+    &:hover {
+        border: none;
+    }
+
+    &:active {
+        box-shadow: none;
+        top: 0px;
+    }
+}

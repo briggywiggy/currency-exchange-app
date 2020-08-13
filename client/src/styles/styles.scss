@@ -1,0 +1,27 @@
+@import './base/settings';
+@import './base/base';
+
+// Components styling
+@import '../components/Button/button';
+@import '../components/FormInput/form-input';
+@import '../components/UserForm/user-form';
+@import '../components/CurrencyConverter/currency-converter';
+@import '../components/CurrencyPicker/currency-picker';
+@import '../components/ForexRatesTable/forex-rates-table';
+@import '../components/ForexRatesTableRow/forex-rates-table-row';
+@import '../components/Loader/loader';
+@import '../components/Header/header';
+
+// Routes styling
+@import '../routes/LoginPage/login-page';
+@import '../routes/LoadingPage/loading-page';
+@import '../routes/RegisterPage/register-page';
+
+@import './components/content-container';
+@import './components/page-header';
+@import './components/input-group';
+@import './components/form';
+@import './components/visibility';
+
+// Third Party styling
+@import 'toastr';

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render LoadingPage correctly 1`] = `
+<div
+  className="login-page page"
+>
+  <div
+    className="content-container"
+  >
+    <UserForm
+      action="login"
+      hasGoogleLogin={true}
+      submitDispatch={[Function]}
+      subtext="Enter your e-mail and password to continue"
+      subtitle="Login Required"
+      title="3DK Exam"
+    />
+  </div>
+</div>
+`;

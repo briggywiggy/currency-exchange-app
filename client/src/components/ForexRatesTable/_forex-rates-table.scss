@@ -1,0 +1,67 @@
+.forex-rates-table {
+    border-collapse: collapse;
+    display: table;
+    margin: $xl-size auto;
+    overflow: scroll;
+    position: relative;
+    table-layout: fixed;
+    white-space: nowrap;
+    width: 100%;
+
+    .thead {
+        width: inherit;
+        position: sticky;
+    }
+
+    .tbody {
+        display: block;
+        height: 40rem;
+        overflow: scroll;
+        width: inherit;
+
+        &:not([data-scroll='0']) {
+            .th {
+                // border-bottom: 5px solid $off-grey;
+
+                &:first-child {
+                    background: transparent;
+                    // border-bottom: 5px solid $white;
+                }
+            }
+        }
+    }
+
+    .tr {
+        display: table-row;
+
+        &:not(:first-child):nth-child(odd) {
+            background: $off-white;
+
+            .td:first-child {
+                background: darken($color: $dark-blue, $amount: 10%);
+            }
+        }
+    }
+
+    .td {
+        display: table-cell;
+        overflow: hidden;
+        padding: $s-size;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .th {
+        @include tableHeader();
+        top: 0;
+    }
+    .td:first-child {
+        @include tableHeader();
+        left: 0;
+    }
+
+    .currency-flag {
+        margin-right: $s-size;
+    }
+}

@@ -1,0 +1,73 @@
+.user-form {
+  align-items: center;
+  display: flex;
+  height: inherit;
+  justify-content: center;
+  width: inherit;
+}
+
+.box-layout {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.box-layout__box {
+  background: fade-out(white, 0.15);
+  border-radius: 3px;
+  padding: 0;
+  text-align: center;
+
+  @media (min-width: $tablet-breakpoint) {
+    display: block;
+    padding: $l-size $m-size;
+  }
+}
+
+.box-layout__title {
+  background: -webkit-linear-gradient(
+    $gradient-light-blue,
+    $gradient-dark-blue
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  font-weight: bolder;
+  margin-bottom: 0;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+
+  @media (min-width: $tablet-breakpoint) {
+    font-size: 64px;
+  }
+}
+
+.box-layout__subtitle {
+  display: none;
+  line-height: 1;
+  margin: 0 0 $s-size 0;
+
+  @media (min-width: $tablet-breakpoint) {
+    display: block;
+  }
+}
+
+.box-layout__subtext {
+  color: $off-grey;
+  font-size: $font-size-small;
+
+  @media (min-width: $tablet-breakpoint) {
+    display: block;
+  }
+}
+
+.user-form__register-text {
+  color: $off-grey;
+  font-size: $font-size-small;
+}
+
+.user-form__register-link {
+  cursor: pointer;
+  color: $light-blue;
+  font-weight: bolder;
+  text-decoration: underline;
+}

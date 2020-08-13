@@ -1,0 +1,43 @@
+// Colors
+$white: #ffffff;
+$off-white: darken($color: $white, $amount: 10%);;
+$grey: #666666;
+$off-grey: #888888;
+$dark-grey: #333333;
+$light-blue: #1c88bf;
+$gradient-light-blue: #7ae9fd;
+$gradient-dark-blue: #62c3df;
+$blue: #3b85cb;
+$dark-blue: darken($color: $blue, $amount: 20%);
+$sub-color: grey;
+$main-color: black;
+$success: #2ed06e;
+
+// Font Sizes
+$font-size-large: 1.8rem;
+$font-size-medium: 1.6rem;
+$font-size-small: 1.4rem;
+
+// Spacing
+$s-size: 1.2rem;
+$m-size: 1.6rem;
+$l-size: 3.2rem;
+$xl-size: 4.8rem;
+
+// Breakpoints
+$tablet-breakpoint: 48rem;
+$desktop-breakpoint: 76.8rem;
+
+@mixin shrinkLabel {
+    top: -16px;
+    font-size: 12px;
+    color: $main-color;
+}
+
+@mixin tableHeader {
+    background: $dark-blue;
+    color: white;
+    position: sticky;
+    text-align: center;
+    transition: 300ms ease all;
+}

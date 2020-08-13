@@ -1,0 +1,36 @@
+.currency-converter {
+    margin: $m-size auto;
+    padding: 0;
+    width: 100%;
+
+    @media (min-width: $tablet-breakpoint) {
+        margin: $xl-size auto;
+        padding: $m-size;
+    }
+}
+.currency-converter__container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    @media (min-width: $desktop-breakpoint) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.currency-converter__group {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.currency-converter__display {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
