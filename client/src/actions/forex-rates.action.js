@@ -1,5 +1,4 @@
 import axios from 'axios';
-import toastr from 'toastr';
 
 export const addForexRate = ({ base, forexRate}) => ({
     type: 'ADD_FOREX_RATE',
@@ -13,12 +12,12 @@ export const startAddForexRate = (base) => {
             base
         }
     }
-    return (dispatch, getState) => {
+    return (dispatch) => {
         return axios.get(`/api/forex/rates`, params)
         .then((response) => {
             const forexRate = response.data;
             dispatch(addForexRate({ base, forexRate }));
-        }).catch((error) => {
+        }).catch(() => {
             dispatch(addForexRate({ base, forexRate: { error: true }}));
         })
     }

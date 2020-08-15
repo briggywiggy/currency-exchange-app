@@ -4,7 +4,7 @@ import { localLogin } from './local-auth.action';
 import { history } from '../routers/AppRouter';
 
 export const startRegisterUser = (data) => {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         return axios({
             method: 'post',
             url: '/api/users',
@@ -14,7 +14,7 @@ export const startRegisterUser = (data) => {
             localStorage.setItem("token", token);
             dispatch(localLogin(token));
             history.push('/dashboard');
-        }).catch((error) => {
+        }).catch(() => {
             toastr.error("A problem was encountered in registering this user.");
         })
     }

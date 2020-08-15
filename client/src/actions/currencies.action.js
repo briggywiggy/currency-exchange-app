@@ -7,7 +7,7 @@ export const populateCurrencies = (currencies) => ({
 });
 
 export const startPopulateCurrencies = () => {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         return axios.get(`/api/forex/symbols`)
         .then((response) => {
             const currencies = response.data.symbols;

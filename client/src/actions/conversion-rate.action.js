@@ -13,7 +13,7 @@ export const startSetConversionRate = ({base, symbols}) => {
             symbols
         }
     }
-    return (dispatch, getState) => {
+    return (dispatch) => {
         return axios.get(`/api/forex/convert`, params)
         .then((response) => {
             const { date, timestamp } = response.data;

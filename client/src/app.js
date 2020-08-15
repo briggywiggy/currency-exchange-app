@@ -40,14 +40,14 @@ let verifyIfTokenIsValid = async () => {
         headers: {
             "Authorization": `Bearer ${token}`
         }
-    }).then((response) => {
+    }).then(() => {
         store.dispatch(localLogin(token));
         history.push('/dashboard');
-    }).catch((error) => {
+    }).catch(() => {
         localStorage.removeItem("token");
     })
 }
-if(!!token) {
+if(token) {
     verifyIfTokenIsValid();
 }
 

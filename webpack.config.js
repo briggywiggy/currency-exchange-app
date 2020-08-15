@@ -4,9 +4,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 process.env.NODE_ENV = process.env.node_ENV || 'development';
 
-if(process.env.NODE_ENV === 'test') {
+if (process.env.NODE_ENV === 'test') {
     require('dotenv').config({ path: './config/test.env' });
-} else if(process.env.NODE_ENV === 'development') {
+} else if (process.env.NODE_ENV === 'development') {
     require('dotenv').config({ path: './config/dev.env' });
 }
 
@@ -21,40 +21,42 @@ module.exports = (env) => {
             filename: 'bundle.js'
         },
         module: {
-            rules: [{
-                loader: 'babel-loader',
-                test: /\.js$/,
-                exclude: /node_modules/
-            }, {
-                test: /\.s?css$/,
-                use: CSSExtract.extract({
-                    fallback: 'style-loader',
+            rules: [
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    use: ['babel-loader', 'eslint-loader']
+                }, {
+                    test: /\.s?css$/,
+                    use: CSSExtract.extract({
+                        fallback: 'style-loader',
+                        use: [
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    sourceMap: true
+                                }
+                            },
+                            {
+                                loader: 'sass-loader',
+                                options: {
+                                    sourceMap: true
+                                }
+                            }
+                        ]
+                    })
+                }, {
+                    test: /\.(png|svg|jpg|gif)$/,
                     use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                sourceMap: true
-                            }
-                        },
-                        {
-                            loader: 'sass-loader',
-                            options: {
-                                sourceMap: true
-                            }
-                        }
+                        'file-loader',
                     ]
-                })
-            }, {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader',
-                ]
-            }, {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: [
-                    'file-loader',
-                ]
-            }]
+                }, {
+                    test: /\.(woff|woff2|eot|ttf|otf)$/,
+                    use: [
+                        'file-loader',
+                    ]
+                }
+            ]
         },
         plugins: [
             CSSExtract,

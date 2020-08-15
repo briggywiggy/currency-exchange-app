@@ -10,7 +10,7 @@ export const logout = () => ({
 });
 
 export const startLogin = () => {
-    return (dispatch) => {
+    return () => {
         return firebase.auth().signInWithPopup(googleAuthProvider);
     }
 }

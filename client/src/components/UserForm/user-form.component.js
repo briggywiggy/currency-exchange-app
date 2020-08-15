@@ -97,7 +97,7 @@ const UserForm = ({ title, subtitle, subtext, action, hasGoogleLogin, submitDisp
                     {
                         action === 'login' &&
                         <p className="user-form__register-text">
-                            Don't have an account?&nbsp;
+                            Don&apos;t have an account?&nbsp;
                             <span className="user-form__register-link" onClick={() => history.push('/register')}>Register</span>
                         </p>
                     }

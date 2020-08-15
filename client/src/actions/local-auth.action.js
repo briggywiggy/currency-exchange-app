@@ -12,7 +12,7 @@ export const localLogout = () => ({
 });
 
 export const startLocalLogin = (data) => {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         return axios({
             method: 'post',
             url: '/api/users/login',
@@ -22,7 +22,7 @@ export const startLocalLogin = (data) => {
             localStorage.setItem("token", token);
             dispatch(localLogin(token));
             history.push('/dashboard');
-        }).catch((error) => {
+        }).catch(() => {
             toastr.error('Invalid username or password.');
         })
     }
@@ -36,7 +36,7 @@ export const startLocalLogout = () => {
             headers: {
                 "Authorization": `Bearer ${getState().localAuth.token}`
             }
-        }).then((response) => {
+        }).then(() => {
             localStorage.removeItem("token");
             dispatch(localLogout());
             history.push('/');

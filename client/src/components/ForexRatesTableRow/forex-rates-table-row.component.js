@@ -21,7 +21,7 @@ const ForexRatesTableRow = ({ index, currencyCode }) => {
             {
                 (() => {
                     if(forexRates[currencyCode]) {
-                        if(forexRates[currencyCode].hasOwnProperty('error')) {
+                        if(Object.prototype.hasOwnProperty.call(forexRates[currencyCode], 'error')) {
                             return (
                                 Object.keys(currencies).map((keyName, currenciesIndex) => (
                                     <div key={currenciesIndex} className="td">
