@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { forexGetRates } from '../services/forex.service';
 
 export const addForexRate = ({ base, forexRate}) => ({
     type: 'ADD_FOREX_RATE',
@@ -13,7 +13,7 @@ export const startAddForexRate = (base) => {
         }
     }
     return (dispatch) => {
-        return axios.get(`/api/forex/rates`, params)
+        return forexGetRates(params)
         .then((response) => {
             const forexRate = response.data;
             dispatch(addForexRate({ base, forexRate }));

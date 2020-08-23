@@ -1,5 +1,5 @@
-import axios from 'axios';
 import toastr from 'toastr';
+import { forexGetCurrencies } from '../services/forex.service';
 
 export const populateCurrencies = (currencies) => ({
     type: 'POPULATE_CURRENCIES',
@@ -8,7 +8,7 @@ export const populateCurrencies = (currencies) => ({
 
 export const startPopulateCurrencies = () => {
     return (dispatch) => {
-        return axios.get(`/api/forex/symbols`)
+        return forexGetCurrencies()
         .then((response) => {
             const currencies = response.data.symbols;
             dispatch(populateCurrencies(currencies))

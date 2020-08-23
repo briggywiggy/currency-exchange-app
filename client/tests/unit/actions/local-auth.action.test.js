@@ -1,8 +1,5 @@
 import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
 import { localLogin, localLogout } from '../../../src/actions/local-auth.action';
-
-const createMockStore = configureMockStore([thunk]);
 
 test('should generate localLogin action object', () => {
     const token = '123abc';

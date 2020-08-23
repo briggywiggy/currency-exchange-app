@@ -1,5 +1,5 @@
-import axios from 'axios';
 import toastr from 'toastr';
+import { forexConvert } from '../services/forex.service';
 
 export const setConversionRate = (conversionRate) => ({
     type: 'SET_CONVERSION_RATE',
@@ -14,7 +14,7 @@ export const startSetConversionRate = ({base, symbols}) => {
         }
     }
     return (dispatch) => {
-        return axios.get(`/api/forex/convert`, params)
+        return forexConvert(params)
         .then((response) => {
             const { date, timestamp } = response.data;
             const conversionRate = {

@@ -1,6 +1,6 @@
-import axios from 'axios';
 import toastr from 'toastr';
 import { history } from '../routers/AppRouter';
+import { localLoginService, localLogoutService } from '../services/auth.service';
 
 export const localLogin = (token) => ({
     type: 'LOCAL_LOGIN',
@@ -13,11 +13,8 @@ export const localLogout = () => ({
 
 export const startLocalLogin = (data) => {
     return (dispatch) => {
-        return axios({
-            method: 'post',
-            url: '/api/users/login',
-            data
-        }).then((response) => {
+        return localLoginService(data)
+        .then((response) => {
             const token = response.data.token;
             localStorage.setItem("token", token);
             dispatch(localLogin(token));
@@ -30,13 +27,9 @@ export const startLocalLogin = (data) => {
 
 export const startLocalLogout = () => {
     return (dispatch, getState) => {
-        return axios({
-            method: 'post',
-            url: '/api/users/logout',
-            headers: {
-                "Authorization": `Bearer ${getState().localAuth.token}`
-            }
-        }).then(() => {
+        const token = getState().localAuth.token;
+        return localLogoutService(token)
+        .then(() => {
             localStorage.removeItem("token");
             dispatch(localLogout());
             history.push('/');

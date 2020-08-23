@@ -1,8 +1,5 @@
 import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
 import { login, logout } from '../../../src/actions/auth.action';
-
-const createMockStore = configureMockStore([thunk]);
 
 test('should generate login action object', () => {
     const uid = '123abc';

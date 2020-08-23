@@ -1,15 +1,12 @@
-import axios from 'axios';
 import toastr from 'toastr';
 import { localLogin } from './local-auth.action';
 import { history } from '../routers/AppRouter';
+import { registerUserService } from '../services/user.service';
 
 export const startRegisterUser = (data) => {
     return (dispatch) => {
-        return axios({
-            method: 'post',
-            url: '/api/users',
-            data
-        }).then((response) => {
+        return registerUserService(data)
+        .then((response) => {
             const token = response.data.token;
             localStorage.setItem("token", token);
             dispatch(localLogin(token));

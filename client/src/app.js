@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import axios from 'axios';
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { login, logout } from './actions/auth.action';
 import { firebase } from './firebase/firebase';
 import LoadingPage from './routes/LoadingPage/loading-page.route';
 import { localLogin } from './actions/local-auth.action';
+import { getUserService } from './services/user.service';
 
 import 'normalize.css/normalize.css';
 import 'currency-flags/dist/currency-flags.min.css';
@@ -34,13 +34,8 @@ ReactDOM.render(<LoadingPage />, document.getElementById("app"));
 const token = localStorage.getItem("token");
 
 let verifyIfTokenIsValid = async () => {
-    await axios({
-        method: 'get',
-        url: '/api/users/me',
-        headers: {
-            "Authorization": `Bearer ${token}`
-        }
-    }).then(() => {
+    await getUserService(token)
+    .then(() => {
         store.dispatch(localLogin(token));
         history.push('/dashboard');
     }).catch(() => {
